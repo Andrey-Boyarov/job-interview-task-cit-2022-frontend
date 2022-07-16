@@ -1,25 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import TaskComboBox from './components/TaskComboBox'
+import {createContext, useState} from "react";
+import {TaskContext} from "./context/TaskContext";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [taskId, setTaskId] = useState(0)
+
+    return (
+      <div>
+          <TaskContext.Provider value={{taskId, setTaskId}}>
+              <TaskComboBox/>
+          </TaskContext.Provider>
+
+      </div>
+    );
 }
 
 export default App;
