@@ -10,6 +10,8 @@ export default function TaskComboBox() {
 
     const [tasks, setTasks] = useState([{value: 0, label: 'first'},{value: 1, label: 'second'}])
 
+    const onChange = event => setTaskId(event.value)
+
     const loadTasks = () => {
         axios
             .get('/getTasks')
@@ -21,9 +23,12 @@ export default function TaskComboBox() {
     }, [])
 
     return(
-        <Select
-            options={tasks}
-            defaultValue={tasks[0]}
-        />
+        <div>
+            <Select
+                options={tasks}
+                placeholder={'Choose task'}
+                onChange={onChange}
+            />
+        </div>
     )
 }
