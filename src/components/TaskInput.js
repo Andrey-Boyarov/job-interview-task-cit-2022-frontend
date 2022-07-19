@@ -4,10 +4,9 @@ import TaskInputTypeOne from "./TaskInputTypeOne";
 import TaskInputTypeTwo from "./TaskInputTypeTwo";
 
 
-export default function TaskInput(){
+export default function TaskInput({currentData, setCurrentData}){
     const {taskInputId, setTaskInputId} = useContext(TaskInputContext)
     const [currentInput, setCurrentInput] = useState(0)
-    const [currentData, setCurrentData] = useState([])
 
     const input = () => {
         if (taskInputId === 0) return <TaskInputTypeOne setData={setCurrentData}/>
