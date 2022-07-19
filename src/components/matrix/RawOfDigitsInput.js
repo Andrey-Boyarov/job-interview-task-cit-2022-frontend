@@ -21,7 +21,6 @@ export default function RawOfDigitsInput({size, rowIndex, matrix, setMatrix}){
         }
         setArray(arr)
     }
-    useEffect(init, [])
 
     const component = () => {
         let counter = 0
@@ -37,6 +36,7 @@ export default function RawOfDigitsInput({size, rowIndex, matrix, setMatrix}){
             <div>{row}</div>
         )
     }
+    useEffect(init, [])
     useEffect(() => {
         const arr = [...matrix]
         arr.splice(rowIndex, 1, array)

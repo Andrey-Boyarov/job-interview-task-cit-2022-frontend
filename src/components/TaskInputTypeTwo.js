@@ -25,7 +25,6 @@ export default function TaskInputTypeTwo({size, setData}){
         }
         setArray(arr)
     }
-    useEffect(init, [])
 
     const component = () => {
         const matrix = []
@@ -36,6 +35,7 @@ export default function TaskInputTypeTwo({size, setData}){
         }
         return matrix
     }
+    useEffect(init, [])
     useEffect(() => {
         setData(array)
     }, [array])
