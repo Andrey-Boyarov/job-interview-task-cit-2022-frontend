@@ -6,11 +6,12 @@ import TaskInputTypeTwo from "./TaskInputTypeTwo";
 
 export default function TaskInput(){
     const {taskInputId, setTaskInputId} = useContext(TaskInputContext)
-    const [currentInput, setCurrentInput] = useState()
+    const [currentInput, setCurrentInput] = useState(0)
+    const [currentData, setCurrentData] = useState([])
 
     const input = () => {
-        if (taskInputId === 0) return <TaskInputTypeOne/>
-        if (taskInputId === 1) return <TaskInputTypeTwo size={3}/>
+        if (taskInputId === 0) return <TaskInputTypeOne setData={setCurrentData}/>
+        if (taskInputId === 1) return <TaskInputTypeTwo size={3} setData={setCurrentData}/>
         else return 'Waiting for choice'
     }
 
@@ -20,6 +21,7 @@ export default function TaskInput(){
 
     return(
         <div>
+            {console.log(currentData)}
             {currentInput}
         </div>
     )

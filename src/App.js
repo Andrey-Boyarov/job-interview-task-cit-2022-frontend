@@ -4,10 +4,12 @@ import {createContext, useEffect, useState} from "react";
 import {TaskContext} from "./context/TaskContext";
 import TaskInput from "./components/TaskInput";
 import {TaskInputContext} from "./context/TaskInputContext";
+import {InputDataContext} from "./context/InputDataContext";
 
 function App() {
     const [taskId, setTaskId] = useState()
     const [taskInputId, setTaskInputId] = useState()
+    const [inputData, setInputData] = useState()
 
     //todo remove
     useEffect(() => {
@@ -18,9 +20,12 @@ function App() {
       <div>
           <TaskContext.Provider value={{taskId, setTaskId}}>
               <TaskComboBox/>
-              <TaskInputContext.Provider value={{taskInputId, setTaskInputId}}>
-                  <TaskInput/>
-              </TaskInputContext.Provider>
+              <InputDataContext.Provider value={{inputData, setInputData}}>
+                  <TaskInputContext.Provider value={{taskInputId, setTaskInputId}}>
+                      <TaskInput/>
+                  </TaskInputContext.Provider>
+
+              </InputDataContext.Provider>
           </TaskContext.Provider>
 
       </div>

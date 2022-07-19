@@ -4,8 +4,10 @@ import {ENTER_KEY} from "../../tools/Tools";
 export default function LOSInput({addElement}){
     const [income, setIncome] = useState('')
     const add = () => {
-        addElement(income)
-        setIncome('')
+        if (income !== '') {
+            addElement(income)
+            setIncome('')
+        }
     }
     const handle = (event) => {
         const key = event.keyCode || event.which

@@ -1,4 +1,5 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import {BACKSPACE_KEY} from "../../tools/Tools";
 
 /**
  * One cell of matrix
@@ -10,13 +11,17 @@ import {useState} from "react";
  * @returns {JSX.Element}
  * @constructor
  */
-export default function Cell({/*handle, */columnIndex, array, setArray}){
-    const [income, setIncome] = useState(0)
+export default function Cell({columnIndex, array, setArray}){
+    const [income, setIncome] = useState('0')
+
     const updateArray = () => {
-        setArray(
-            array.splice(columnIndex, 1, income)
-        )
+        const arr = [...array]
+        arr.splice(columnIndex, 1, income)
+        setArray(arr)
     }
+    useEffect(() => {
+        updateArray()
+    }, [income])
 
     return(
         <div>
@@ -30,7 +35,6 @@ export default function Cell({/*handle, */columnIndex, array, setArray}){
                    }}
                    onKeyDown={e => {
                        const key = e.keyCode || e.which
-                       console.log(key)
                        if (['1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(income)
                            && key === BACKSPACE_KEY.code)
                        setIncome('0')

@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import LOSItem from "./LOSItem";
 import LOSInput from "./LOSInput";
 import {getKey} from "../../tools/Tools";
@@ -9,8 +9,9 @@ import {getKey} from "../../tools/Tools";
  * @returns {*}
  * @constructor
  */
-export default function LOSList(){
+export default function LOSList({setData}){
     const [list, setList] = useState([{value: 0, label: "first element"}])
+
     const destroy = (value) => {
         setList(list.filter((cur) => {return cur.value !== value}))
     }
@@ -23,6 +24,7 @@ export default function LOSList(){
     const addElement = (label) => {
         setList([...list, {value: getKey(), label: label}])
     }
+    useEffect(() => setData(list), [list])
 
     return(
         <div>

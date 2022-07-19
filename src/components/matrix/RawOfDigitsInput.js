@@ -11,18 +11,18 @@ import {ENTER_KEY} from "../../tools/Tools";
  * @returns {*}
  * @constructor
  */
-export default function RawOfDigitsInput({size, rowIndex, matrix, setMatrix/*, handleRow*/}){
+export default function RawOfDigitsInput({size, rowIndex, matrix, setMatrix}){
     const [array, setArray] = useState([])
 
     const init = () => {
+        const arr = []
         for (let i = 0; i < size; ++i){
-            setArray([...array, 0])
+            arr.push('0')
         }
-    }/*
-    const handleCell = (event) => {
-        const key = event.keyCode || event.which
-        if (key === ENTER_KEY.code) handleRow(rowIndex, array)
-    }*/
+        setArray(arr)
+    }
+    useEffect(init, [])
+
     const component = () => {
         let counter = 0
         const row = []
@@ -30,7 +30,6 @@ export default function RawOfDigitsInput({size, rowIndex, matrix, setMatrix/*, h
             row.push(
                 <Cell key={j}
                       columnIndex={counter++}
-                      // handle={handleCell}
                       array={array}
                       setArray={setArray}/>
             )
@@ -38,9 +37,10 @@ export default function RawOfDigitsInput({size, rowIndex, matrix, setMatrix/*, h
             <div>{row}</div>
         )
     }
-    useEffect(init, [])
     useEffect(() => {
-        setMatrix(matrix.splice(rowIndex, 1, array))
+        const arr = [...matrix]
+        arr.splice(rowIndex, 1, array)
+        setMatrix(arr)
     }, [array])
 
     return(

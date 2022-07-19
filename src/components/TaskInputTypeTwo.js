@@ -7,21 +7,26 @@ import RawOfDigitsInput from "./matrix/RawOfDigitsInput";
  * Second type of input for tasks - in our case for task two - the magic square
  *
  * @param size
+ * @param setData
  * @returns {JSX.Element}
  * @constructor
  */
-export default function TaskInputTypeTwo({size}){
+export default function TaskInputTypeTwo({size, setData}){
     const [array, setArray] = useState([])
 
     const init = () => {
+        const arr = []
         for (let i = 0; i < size; ++i){
-            setArray([...array, []])
+            const inside = []
+            for (let s = 0; s < size; ++s){
+                inside.push('0')
+            }
+            arr.push(inside)
         }
-    }/*
-    const handleRow = (row) => {
-        for (let i = 0; i < size; ++i) setArray(array.splice(i, 1, ))
-        handleMatrix(array)
-    }*/
+        setArray(arr)
+    }
+    useEffect(init, [])
+
     const component = () => {
         const matrix = []
         for (let k = 0; k < size; ++k) {
@@ -31,7 +36,9 @@ export default function TaskInputTypeTwo({size}){
         }
         return matrix
     }
-    useEffect(init, [])
+    useEffect(() => {
+        setData(array)
+    }, [array])
 
     return(
         <div>
@@ -39,8 +46,3 @@ export default function TaskInputTypeTwo({size}){
         </div>
     )
 }
-
-// columnIndex={counter++}
-// handleRow={handleRow}
-// array={array}
-// setArray={setArray}
