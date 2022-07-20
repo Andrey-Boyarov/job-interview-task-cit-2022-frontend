@@ -1,7 +1,7 @@
 import {useContext, useEffect, useState} from "react";
 import {TaskInputContext} from "../context/TaskInputContext";
-import TaskInputTypeOne from "./input_types/TaskInputTypeOne";
-import TaskInputTypeTwo from "./input_types/TaskInputTypeTwo";
+import TaskInputTypeOne from "./inputTypes/TaskInputTypeOne";
+import TaskInputTypeTwo from "./inputTypes/TaskInputTypeTwo";
 
 
 export default function TaskInput({currentData, setCurrentData}){
