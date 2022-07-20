@@ -1,8 +1,9 @@
-import ImportButtons from "./import/ImportButtons";
+import ImportButton from "./ImportButton";
 import {useContext, useState} from "react";
-import {ImportContext} from "../context/ImportContext";
+import {ImportContext} from "../../context/ImportContext";
+import UploadButton from "./UploadButton";
 
-export default function Import(){
+export default function Upload(){
     const [result, setResult] = useState()
 
     const resultView = () => {
@@ -16,7 +17,7 @@ export default function Import(){
     const component = () => {
         return(
             <div>
-                <ImportButtons setResult={setResult}/>
+                <UploadButton setResult={setResult}/>
                 {resultView()}
             </div>
         )

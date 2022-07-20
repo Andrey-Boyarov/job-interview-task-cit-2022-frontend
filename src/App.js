@@ -8,8 +8,11 @@ import {InputDataContext} from "./context/InputDataContext";
 import Result from "./components/Result";
 import BottomButtons from "./components/BottomButtons";
 import ManualInput from "./components/ManualInput";
-import Import from "./components/Import";
+import Import from "./components/import/Import";
 import {ImportContext} from "./context/ImportContext";
+import FileUploader from "./components/workWithFiles/FileUploader";
+import {UploadContext} from "./context/UploadContext";
+import Upload from "./components/import/Upload";
 
 function App() {
     const [taskId, setTaskId] = useState()
@@ -19,6 +22,7 @@ function App() {
     const [answer, setAnswer] = useState()
     const [externalImport, setExternalImport] = useState({})
     const [importTaskId, setImportTaskId] = useState()
+    const [uploadTaskId, setUploadTaskId] = useState()
 
     //todo remove
     useEffect(() => {
@@ -39,6 +43,9 @@ function App() {
           <ImportContext.Provider value={{taskId: importTaskId, setTaskId: setImportTaskId}}>
               <Import/>
           </ImportContext.Provider>
+          <UploadContext.Provider value={{taskId: uploadTaskId, setTaskId: setUploadTaskId}}>
+              <Upload/>
+          </UploadContext.Provider>
       </div>
     );
 }
