@@ -1,12 +1,11 @@
 import {useContext, useEffect, useState} from "react";
 import axios from 'axios'
 import Select from 'react-select'
-import {TaskContext} from "../context/TaskContext";
 
 
-export default function TaskComboBox() {
+export default function TaskComboBox({context}) {
 
-    const {taskId, setTaskId} = useContext(TaskContext)
+    const {setTaskId} = useContext(context)
 
     const [tasks, setTasks] = useState([{value: 0, label: 'first'},{value: 1, label: 'second'}])
 

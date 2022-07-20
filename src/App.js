@@ -7,6 +7,9 @@ import {TaskInputContext} from "./context/TaskInputContext";
 import {InputDataContext} from "./context/InputDataContext";
 import Result from "./components/Result";
 import BottomButtons from "./components/BottomButtons";
+import ManualInput from "./components/ManualInput";
+import Import from "./components/Import";
+import {ImportContext} from "./context/ImportContext";
 
 function App() {
     const [taskId, setTaskId] = useState()
@@ -14,6 +17,8 @@ function App() {
     const [inputData, setInputData] = useState()
     const [currentData, setCurrentData] = useState()
     const [answer, setAnswer] = useState()
+    const [externalImport, setExternalImport] = useState({})
+    const [importTaskId, setImportTaskId] = useState()
 
     //todo remove
     useEffect(() => {
@@ -23,17 +28,17 @@ function App() {
     return (
       <div>
           <TaskContext.Provider value={{taskId, setTaskId}}>
-              <TaskComboBox/>
-              <InputDataContext.Provider value={{inputData, setInputData}}>
+              <InputDataContext.Provider value={{inputData, setInputData, externalImport, setExternalImport}}>
                   <TaskInputContext.Provider value={{taskInputId, setTaskInputId}}>
-                      <TaskInput currentData={currentData} setCurrentData={setCurrentData}/>
+                      <ManualInput currentData={currentData} setCurrentData={setCurrentData}/>
                   </TaskInputContext.Provider>
                   <Result currentData={currentData}/>
                   <BottomButtons currentData={currentData} setAnswer={setAnswer}/>
-
               </InputDataContext.Provider>
           </TaskContext.Provider>
-
+          <ImportContext.Provider value={{taskId: importTaskId, setTaskId: setImportTaskId}}>
+              <Import/>
+          </ImportContext.Provider>
       </div>
     );
 }

@@ -1,7 +1,7 @@
 import {useContext, useEffect, useState} from "react";
 import {TaskInputContext} from "../context/TaskInputContext";
-import TaskInputTypeOne from "./TaskInputTypeOne";
-import TaskInputTypeTwo from "./TaskInputTypeTwo";
+import TaskInputTypeOne from "./input_types/TaskInputTypeOne";
+import TaskInputTypeTwo from "./input_types/TaskInputTypeTwo";
 
 
 export default function TaskInput({currentData, setCurrentData}){
@@ -21,7 +21,7 @@ export default function TaskInput({currentData, setCurrentData}){
     return(
         <div>
             {console.log(currentData)}
-            {currentInput}
+            {input()}
         </div>
     )
 }

@@ -8,22 +8,26 @@ export default function BottomButtons({currentData, setAnswer}){
     const calculate = () => {
         axios
             .post('/calculate/' + taskId, {currentData: currentData})
-            .then(data => {
-                setAnswer(document.body.innerHTML = "<div>" + JSON.stringify(data) + "</div>")
+            .then(response => {
+                setAnswer(document.body.innerHTML = "<div>" + JSON.stringify(response.data) + "</div>")
             })
     }
     const save = () => {
         axios
             .post('/save/' + taskId, {currentData: currentData})
-            .then(data => {
-                setAnswer(document.body.innerHTML = "<div>" + JSON.stringify(data) + "</div>")
+            .then(response => {
+                setAnswer(document.body.innerHTML = "<div>" + JSON.stringify(response.data) + "</div>")
             })
+    }
+    const exportBtn = () => {
+
     }
     const component = () => {
         if (taskId > -1) return(
             <div>
                 <button onClick={calculate}>Calculate</button>
                 <button onClick={save}>Save</button>
+                <button onClick={exportBtn}>Export</button>
             </div>
         )
     }

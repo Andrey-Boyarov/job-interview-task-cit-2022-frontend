@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
-import {ENTER_KEY} from "../tools/Tools";
-import Cell from "./matrix/Cell";
-import RawOfDigitsInput from "./matrix/RawOfDigitsInput";
+import {ENTER_KEY} from "../../tools/Tools";
+import Cell from "../matrix/Cell";
+import RawOfDigitsInput from "../matrix/RawOfDigitsInput";
 
 /**
  * Second type of input for tasks - in our case for task two - the magic square

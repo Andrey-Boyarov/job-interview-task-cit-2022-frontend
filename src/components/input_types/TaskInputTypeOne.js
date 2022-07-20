@@ -5,7 +5,7 @@
  * @returns {JSX.Element}
  * @constructor
  */
-import ListOfStrings from "./ListOfStrings";
+import ListOfStrings from "../ListOfStrings";
 import {useEffect, useState} from "react";
 
 export default function TaskInputTypeOne({setData}){
