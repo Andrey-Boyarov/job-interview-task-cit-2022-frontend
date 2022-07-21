@@ -13,6 +13,7 @@ import {ImportContext} from "./context/ImportContext";
 import FileUploader from "./components/workWithFiles/FileUploader";
 import {UploadContext} from "./context/UploadContext";
 import Upload from "./components/import/Upload";
+import Export from "./components/Export";
 
 function App() {
     const [taskId, setTaskId] = useState()
@@ -38,6 +39,7 @@ function App() {
                   </TaskInputContext.Provider>
                   <Result currentData={currentData}/>
                   <BottomButtons currentData={currentData} setAnswer={setAnswer}/>
+                  <Export currentData={currentData}/>
               </InputDataContext.Provider>
           </TaskContext.Provider>
           <ImportContext.Provider value={{taskId: importTaskId, setTaskId: setImportTaskId}}>
