@@ -8,7 +8,7 @@ export default function Result({answer}){
 
 
     const component = () => {
-        if (task > -1) return(
+        if (task) return(
             <div>Result: {answer}</div>
         )
     }

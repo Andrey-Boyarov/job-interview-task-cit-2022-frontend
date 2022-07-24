@@ -9,8 +9,8 @@ export default function TaskInput({currentData, setCurrentData}){
     const [currentInput, setCurrentInput] = useState(0)
 
     const input = () => {
-        if (taskInputId === 0) return <TaskInputTypeOne setData={setCurrentData}/>
-        if (taskInputId === 1) return <TaskInputTypeTwo size={3} setData={setCurrentData}/>
+        if (taskInputId === 1) return <TaskInputTypeOne setData={setCurrentData}/>
+        if (taskInputId === 2) return <TaskInputTypeTwo size={3} setData={setCurrentData}/>
         else return 'Waiting for choice'
     }
 

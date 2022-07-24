@@ -18,7 +18,7 @@ export default function Export({currentData}){
             })
     }
     const component = () => {
-        if (taskId > -1) return(<button onClick={downloadFile}>Download as file</button>)
+        if (taskId) return(<button onClick={downloadFile}>Download as file</button>)
     }
 
     return(

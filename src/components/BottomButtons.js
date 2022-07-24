@@ -23,7 +23,7 @@ export default function BottomButtons({currentData, setAnswer}){
 
     }
     const component = () => {
-        if (taskId > -1) return(
+        if (taskId) return(
             <div>
                 <button onClick={calculate}>Calculate</button>
                 <button onClick={save}>Save</button>

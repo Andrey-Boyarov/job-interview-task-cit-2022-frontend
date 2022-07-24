@@ -7,13 +7,13 @@ export default function TaskComboBox({context}) {
 
     const {setTaskId} = useContext(context)
 
-    const [tasks, setTasks] = useState([{value: 0, label: 'first'},{value: 1, label: 'second'}])
+    const [tasks, setTasks] = useState([])
 
     const onChange = event => setTaskId(event.value)
 
     const loadTasks = () => {
         axios
-            .get('/getTasks')
+            .get('/tasks/getTasks')
             .then(({data}) => setTasks(data))
     }
 
