@@ -14,6 +14,7 @@ import FileUploader from "./components/workWithFiles/FileUploader";
 import {UploadContext} from "./context/UploadContext";
 import Upload from "./components/import/Upload";
 import Export from "./components/Export";
+import axios from "axios";
 
 function App() {
     const [taskId, setTaskId] = useState()
@@ -25,9 +26,11 @@ function App() {
     const [importTaskId, setImportTaskId] = useState()
     const [uploadTaskId, setUploadTaskId] = useState()
 
-    //todo remove
     useEffect(() => {
-        setTaskInputId(taskId)
+        if (taskId)
+        axios
+            .get('/tasks/getInputType/' + taskId)
+            .then(response => setTaskInputId(response.data))
     }, [taskId])
 
     return (
