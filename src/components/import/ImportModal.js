@@ -1,7 +1,7 @@
 import Modal from "react-modal";
 import {ImportContext} from "../../context/ImportContext";
 import TaskComboBox from "../TaskComboBox";
-import {useContext, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import axios from "axios";
 
 export default function ImportModal({show, close, setResult}){
@@ -9,6 +9,7 @@ export default function ImportModal({show, close, setResult}){
     const [content, setContent] = useState([]) //[{id, label}]
 
     const loadContent = () => {
+        if (taskId)
         axios
             .get('/downloadSavedByTask/' + taskId)
             .then(response => setContent(response.data))
@@ -24,9 +25,9 @@ export default function ImportModal({show, close, setResult}){
         const arr = [...content]
         setContent(arr.filter(el => el.id !== id))
     }
+    useEffect(loadContent, [taskId])
     const component = () => {
         if (show) {
-            loadContent()
             const arr = [...content]
             return(
                 <div>
