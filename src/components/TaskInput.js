@@ -20,7 +20,6 @@ export default function TaskInput({currentData, setCurrentData}){
 
     return(
         <div>
-            {console.log(currentData)}
             {input()}
         </div>
     )
