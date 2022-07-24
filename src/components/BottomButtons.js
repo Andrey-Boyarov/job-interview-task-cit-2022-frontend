@@ -7,16 +7,16 @@ export default function BottomButtons({currentData, setAnswer}){
 
     const calculate = () => {
         axios
-            .post('/calculate/' + taskId, {currentData: currentData})
+            .post('/tasks/calculate/' + taskId, {currentData: currentData})
             .then(response => {
-                setAnswer(document.body.innerHTML = "<div>" + JSON.stringify(response.data) + "</div>")
+                setAnswer(response.data)
             })
     }
     const save = () => {
         axios
             .post('/save/' + taskId, {currentData: currentData})
             .then(response => {
-                setAnswer(document.body.innerHTML = "<div>" + JSON.stringify(response.data) + "</div>")
+                response.data
             })
     }
     const exportBtn = () => {

@@ -32,6 +32,7 @@ function App() {
             .get('/tasks/getInputType/' + taskId)
             .then(response => setTaskInputId(response.data))
     }, [taskId])
+    useEffect(() => setAnswer(null), [taskId, currentData])
 
     return (
       <div>
@@ -40,7 +41,7 @@ function App() {
                   <TaskInputContext.Provider value={{taskInputId, setTaskInputId}}>
                       <ManualInput currentData={currentData} setCurrentData={setCurrentData}/>
                   </TaskInputContext.Provider>
-                  <Result currentData={currentData}/>
+                  <Result answer={answer}/>
                   <BottomButtons currentData={currentData} setAnswer={setAnswer}/>
                   <Export currentData={currentData}/>
               </InputDataContext.Provider>

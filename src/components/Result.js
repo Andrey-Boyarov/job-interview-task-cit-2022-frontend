@@ -3,16 +3,11 @@ import axios from "axios";
 import {TaskContext} from "../context/TaskContext";
 
 export default function Result({answer}){
-    const {taskId} = useContext(TaskContext)
-    const [task, setTask] = useState()
-
-
     const component = () => {
-        if (task) return(
+        if (answer) return(
             <div>Result: {answer}</div>
         )
     }
-    useEffect(() => setTask(taskId), [taskId])
 
     return(
         component()
