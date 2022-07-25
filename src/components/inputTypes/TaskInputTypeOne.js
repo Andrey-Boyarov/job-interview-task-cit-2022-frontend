@@ -22,8 +22,8 @@ export default function TaskInputTypeOne({setData}){
 
     return(
         <div>
-            <ListOfStrings label={'first listOfStrings'} setData={setArrayOne}/>
-            <ListOfStrings label={'second listOfStrings'} setData={setArrayTwo}/>
+            <ListOfStrings label={'First list'} setData={setArrayOne}/>
+            <ListOfStrings label={'Second list'} setData={setArrayTwo}/>
         </div>
     )
 }
