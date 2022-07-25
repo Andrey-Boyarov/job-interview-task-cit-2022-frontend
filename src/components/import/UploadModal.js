@@ -10,7 +10,7 @@ export default function UploadModal({show, close, setResult}){
     const {taskId} = useContext(UploadContext)
 
     const component = () => {
-        if (taskId) return(<FileUploader setResult={setResult}/>)
+        if (taskId) return(<FileUploader setResult={setResult} close={close}/>)
     }
 
     return(

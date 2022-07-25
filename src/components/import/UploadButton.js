@@ -4,7 +4,7 @@ import ImportModal from "./ImportModal";
 import {ImportContext} from "../../context/ImportContext";
 import UploadModal from "./UploadModal";
 
-export default function UploadButton(setResult){
+export default function UploadButton({setResult}){
     const [show, setShow] = useState(false)
 
     const component = () => {

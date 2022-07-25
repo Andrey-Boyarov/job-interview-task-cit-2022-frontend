@@ -47,11 +47,11 @@ function App() {
               </InputDataContext.Provider>
           </TaskContext.Provider>
           <ImportContext.Provider value={{taskId: importTaskId, setTaskId: setImportTaskId}}>
-              <Import/>
+              <UploadContext.Provider value={{taskId: uploadTaskId, setTaskId: setUploadTaskId}}>
+                  <Import/>
+              </UploadContext.Provider>
           </ImportContext.Provider>
-          <UploadContext.Provider value={{taskId: uploadTaskId, setTaskId: setUploadTaskId}}>
-              <Upload/>
-          </UploadContext.Provider>
+
       </div>
     );
 }

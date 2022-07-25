@@ -2,7 +2,7 @@ import axios from "axios";
 import {useContext, useState} from "react";
 import {UploadContext} from "../../context/UploadContext";
 
-export default function FileUploader({setResult}){
+export default function FileUploader({setResult, close}){
     const [file, setFile] = useState()
     const {taskId} = useContext(UploadContext)
 
@@ -11,6 +11,7 @@ export default function FileUploader({setResult}){
     }
 
     function handleSubmit(event) {
+        close()
         event.preventDefault()
         const formData = new FormData()
         formData.append('file', file)
@@ -21,7 +22,7 @@ export default function FileUploader({setResult}){
             }
         }
         axios
-            .post('/upload/' + taskId, formData, config)
+            .post('/file/upload/' + taskId, formData, config)
             .then((response) => {
                 setResult(response.data)
             })

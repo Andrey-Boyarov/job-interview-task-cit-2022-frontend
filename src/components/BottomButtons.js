@@ -19,15 +19,11 @@ export default function BottomButtons({currentData, setAnswer}){
                 response.data
             })
     }
-    const exportBtn = () => {
-
-    }
     const component = () => {
         if (taskId) return(
             <div>
                 <button onClick={calculate}>Calculate</button>
                 <button onClick={save}>Save</button>
-                <button onClick={exportBtn}>Export</button>
             </div>
         )
     }
