@@ -9,7 +9,7 @@ export default function ImportModal({show, close, setResult}){
     const [content, setContent] = useState([]) //[{value, label}]
 
     const loadContent = () => {
-        if (taskId)
+        if (taskId && show === true)
         axios
             .get('/hotInput/getByTask/' + taskId)
             .then(response => setContent(response.data))
@@ -21,11 +21,11 @@ export default function ImportModal({show, close, setResult}){
     }
     const deleteById = (id) => {
         axios
-            .delete('/deleteSavedById/' + id)
+            .delete('/hotInput/delete/' + id)
         const arr = [...content]
         setContent(arr.filter(el => el.value !== id))
     }
-    useEffect(loadContent, [taskId])
+    useEffect(loadContent, [taskId, show])
     const component = () => {
         if (show) {
             const arr = [...content]
