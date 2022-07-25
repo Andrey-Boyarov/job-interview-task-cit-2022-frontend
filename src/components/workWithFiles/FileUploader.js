@@ -15,7 +15,6 @@ export default function FileUploader({setResult, close}){
         event.preventDefault()
         const formData = new FormData()
         formData.append('file', file)
-        console.log(file)
         const config = {
             headers: {
                 'content-type': 'multipart/form-data',
