@@ -11,7 +11,7 @@ import {BACKSPACE_KEY} from "../../tools/Tools";
  * @returns {JSX.Element}
  * @constructor
  */
-export default function Cell({columnIndex, array, setArray}){
+export default function Cell({columnIndex, array, setArray, size}){
     const [income, setIncome] = useState('0')
 
     const updateArray = () => {
@@ -22,6 +22,7 @@ export default function Cell({columnIndex, array, setArray}){
     useEffect(() => {
         updateArray()
     }, [income])
+    useEffect(() => setIncome('0'), [size])
 
     return(
         <div>

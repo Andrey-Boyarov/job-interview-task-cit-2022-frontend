@@ -30,18 +30,19 @@ export default function RawOfDigitsInput({size, rowIndex, matrix, setMatrix}){
                 <Cell key={j}
                       columnIndex={counter++}
                       array={array}
-                      setArray={setArray}/>
+                      setArray={setArray}
+                      size={size}/>
             )
         return(
             <div>{row}</div>
         )
     }
-    useEffect(init, [])
+    useEffect(init, [size])
     useEffect(() => {
         const arr = [...matrix]
         arr.splice(rowIndex, 1, array)
         setMatrix(arr)
-    }, [array])
+    }, [array, size])
 
     return(
         <div>

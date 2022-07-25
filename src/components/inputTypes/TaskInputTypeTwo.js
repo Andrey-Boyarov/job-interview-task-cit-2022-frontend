@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {ENTER_KEY} from "../../tools/Tools";
+import {BACKSPACE_KEY, ENTER_KEY} from "../../tools/Tools";
 import Cell from "../matrix/Cell";
 import RawOfDigitsInput from "../matrix/RawOfDigitsInput";
 
@@ -11,8 +11,9 @@ import RawOfDigitsInput from "../matrix/RawOfDigitsInput";
  * @returns {JSX.Element}
  * @constructor
  */
-export default function TaskInputTypeTwo({size, setData}){
+export default function TaskInputTypeTwo({defaultSize, setData}){
     const [array, setArray] = useState([])
+    const [size, setSize] = useState(defaultSize)
 
     const init = () => {
         const arr = []
@@ -35,13 +36,31 @@ export default function TaskInputTypeTwo({size, setData}){
         }
         return matrix
     }
-    useEffect(init, [])
+    useEffect(init, [size])
     useEffect(() => {
         setData(array)
-    }, [array])
+    }, [array, size])
 
     return(
         <div>
+            <div>Input matrix size</div>
+            <input type={"number"}
+                   value={size}
+                   onChange={(e) => {
+                       if (['03', '04', '05', '06', '07', '08', '09'].includes(e.target.value))
+                       {setSize(e.target.value.charAt(1))}
+                       else if (parseInt(e.target.value) > -1)
+                       {setSize(e.target.value)}
+                       if ('1' === e.target.value) setSize('2')
+                   }}
+                   onKeyDown={e => {
+                       const key = e.keyCode || e.which
+                       if (['3', '4', '5', '6', '7', '8', '9'].includes(size)
+                           && key === BACKSPACE_KEY.code)
+                           setSize('2')
+                   }}
+            />
+            <div>Input values</div>
             {component()}
         </div>
     )

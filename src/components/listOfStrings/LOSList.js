@@ -10,7 +10,7 @@ import {getKey} from "../../tools/Tools";
  * @constructor
  */
 export default function LOSList({setData}){
-    const [list, setList] = useState([{value: 0, label: "first element"}])
+    const [list, setList] = useState([])
 
     const destroy = (value) => {
         setList(list.filter((cur) => {return cur.value !== value}))
