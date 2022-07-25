@@ -17,7 +17,7 @@ export default function ImportModal({show, close, setResult}){
     }
     const loadById = (id) => {
         axios
-            .get('/hotInput/ById/' + id)
+            .get('/hotInput/calculate/' + id)
             .then(response => setResult(response.data))
     }
     const deleteById = (id) => {

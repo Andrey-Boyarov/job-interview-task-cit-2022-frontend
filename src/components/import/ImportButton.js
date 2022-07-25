@@ -3,7 +3,7 @@ import {useContext, useState} from "react";
 import ImportModal from "./ImportModal";
 import {ImportContext} from "../../context/ImportContext";
 
-export default function ImportButton(setResult){
+export default function ImportButton({setResult}){
     const [show, setShow] = useState(false)
 
     const component = () => {
