@@ -6,24 +6,24 @@ import axios from "axios";
 
 export default function ImportModal({show, close, setResult}){
     const {taskId} = useContext(ImportContext)
-    const [content, setContent] = useState([]) //[{id, label}]
+    const [content, setContent] = useState([]) //[{value, label}]
 
     const loadContent = () => {
         if (taskId)
         axios
-            .get('/downloadSavedByTask/' + taskId)
+            .get('/hotInput/getByTask/' + taskId)
             .then(response => setContent(response.data))
     }
     const loadById = (id) => {
         axios
-            .get('/downloadSavedById/' + id)
+            .get('/hotInput/ById/' + id)
             .then(response => setResult(response.data))
     }
     const deleteById = (id) => {
         axios
-            .get('/deleteSavedById/' + id)
+            .delete('/deleteSavedById/' + id)
         const arr = [...content]
-        setContent(arr.filter(el => el.id !== id))
+        setContent(arr.filter(el => el.value !== id))
     }
     useEffect(loadContent, [taskId])
     const component = () => {
@@ -34,13 +34,13 @@ export default function ImportModal({show, close, setResult}){
                     {
                         arr.map(el => {
                             return (
-                                <li key={el.id}>
+                                <li key={el.value}>
                                     <div>{el.label}</div>
                                     <button onClick={() => {
-                                        loadById(el.id)
+                                        loadById(el.value)
                                         close()
                                     }}>Load</button>
-                                    <button onClick={() => deleteById(el.id)}>Delete</button>
+                                    <button onClick={() => deleteById(el.value)}>Delete</button>
                                 </li>
                             )
                         })

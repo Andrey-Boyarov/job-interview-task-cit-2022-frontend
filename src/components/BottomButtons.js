@@ -14,7 +14,7 @@ export default function BottomButtons({currentData, setAnswer}){
     }
     const save = () => {
         axios
-            .post('/save/' + taskId, {currentData: currentData})
+            .post('/hotInput/save/' + taskId, {currentData: currentData})
             .then(response => {
                 response.data
             })
