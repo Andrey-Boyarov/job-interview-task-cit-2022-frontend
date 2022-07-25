@@ -5,7 +5,7 @@ import {useContext, useEffect, useState} from "react";
 import axios from "axios";
 
 export default function ImportModal({show, close, setResult}){
-    const {taskId} = useContext(ImportContext)
+    const {taskId, setTaskId} = useContext(ImportContext)
     const [content, setContent] = useState([]) //[{value, label}]
 
     const loadContent = () => {
@@ -13,6 +13,7 @@ export default function ImportModal({show, close, setResult}){
         axios
             .get('/hotInput/getByTask/' + taskId)
             .then(response => setContent(response.data))
+        if (!taskId) setContent([])
     }
     const loadById = (id) => {
         axios
@@ -25,7 +26,8 @@ export default function ImportModal({show, close, setResult}){
         const arr = [...content]
         setContent(arr.filter(el => el.value !== id))
     }
-    useEffect(loadContent, [taskId, show])
+    useEffect(loadContent, [taskId])
+    useEffect(() => {if (show === false) setTaskId(null)})
     const component = () => {
         if (show) {
             const arr = [...content]
