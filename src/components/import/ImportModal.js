@@ -3,6 +3,7 @@ import {ImportContext} from "../../context/ImportContext";
 import TaskComboBox from "../TaskComboBox";
 import {useContext, useEffect, useState} from "react";
 import axios from "axios";
+import "../../styles/Modal.css"
 
 export default function ImportModal({show, close, setResult}){
     const {taskId, setTaskId} = useContext(ImportContext)
@@ -37,7 +38,7 @@ export default function ImportModal({show, close, setResult}){
                         arr.map(el => {
                             return (
                                 <li key={el.value}>
-                                    <div>{el.label}</div>
+                                    <div className={"Output"}>{el.label}</div>
                                     <button onClick={() => {
                                         loadById(el.value)
                                         close()

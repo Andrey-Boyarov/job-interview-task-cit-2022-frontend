@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import Cell from "./Cell";
 import {ENTER_KEY} from "../../tools/Tools";
+import "../../styles/TaskInput.css"
 
 /**
  * One row of matrix (contains many cells)
@@ -34,7 +35,7 @@ export default function RawOfDigitsInput({size, rowIndex, matrix, setMatrix}){
                       size={size}/>
             )
         return(
-            <div>{row}</div>
+            <div className={"RawOfDigitsInput"}>{row}</div>
         )
     }
     useEffect(init, [size])

@@ -35,7 +35,7 @@ function App() {
     useEffect(() => setAnswer(null), [taskId, currentData])
 
     return (
-      <div>
+      <div className={"App"}>
           <TaskContext.Provider value={{taskId, setTaskId}}>
               <InputDataContext.Provider value={{inputData, setInputData, externalImport, setExternalImport}}>
                   <TaskInputContext.Provider value={{taskInputId, setTaskInputId}}>

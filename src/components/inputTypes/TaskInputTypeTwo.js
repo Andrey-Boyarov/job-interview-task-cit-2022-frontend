@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {BACKSPACE_KEY, ENTER_KEY} from "../../tools/Tools";
-import Cell from "../matrix/Cell";
 import RawOfDigitsInput from "../matrix/RawOfDigitsInput";
+import "../../styles/TaskInput.css"
 
 /**
  * Second type of input for tasks - in our case for task two - the magic square
@@ -43,7 +43,7 @@ export default function TaskInputTypeTwo({defaultSize, setData}){
 
     return(
         <div>
-            <div>Input matrix size</div>
+            <h3>Input matrix size</h3>
             <input type={"number"}
                    value={size}
                    onChange={(e) => {
@@ -52,6 +52,7 @@ export default function TaskInputTypeTwo({defaultSize, setData}){
                        else if (parseInt(e.target.value) > -1)
                        {setSize(e.target.value)}
                        if ('1' === e.target.value) setSize('2')
+                       if (parseInt(e.target.value) > 9) setSize('9')
                    }}
                    onKeyDown={e => {
                        const key = e.keyCode || e.which
@@ -60,7 +61,7 @@ export default function TaskInputTypeTwo({defaultSize, setData}){
                            setSize('2')
                    }}
             />
-            <div>Input values</div>
+            <h4>Input values</h4>
             {component()}
         </div>
     )

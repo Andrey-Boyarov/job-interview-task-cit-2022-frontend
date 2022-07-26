@@ -5,7 +5,7 @@ import TaskInputTypeTwo from "./inputTypes/TaskInputTypeTwo";
 
 
 export default function TaskInput({currentData, setCurrentData}){
-    const {taskInputId, setTaskInputId} = useContext(TaskInputContext)
+    const {taskInputId} = useContext(TaskInputContext)
     const [currentInput, setCurrentInput] = useState(0)
 
     const input = () => {
@@ -19,7 +19,7 @@ export default function TaskInput({currentData, setCurrentData}){
     }, [taskInputId])
 
     return(
-        <div>
+        <div className={"textClass"}>
             {input()}
         </div>
     )

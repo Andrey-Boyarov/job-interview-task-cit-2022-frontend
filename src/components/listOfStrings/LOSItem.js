@@ -1,4 +1,4 @@
-import {useState} from "react";
+import "../../styles/TaskInput.css"
 
 export default function LOSItem({value, label, destroy}){
     const destroyThis = () => {
@@ -6,8 +6,8 @@ export default function LOSItem({value, label, destroy}){
     }
 
     return(
-        <div>
-            <div>{label}</div>
+        <div className={"LOSItem"}>
+            <div className={"label"}>{label}</div>
             <button onClick={destroyThis}>delete</button>
         </div>
     )

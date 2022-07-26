@@ -23,8 +23,8 @@ export default function TaskComboBox({context}) {
 
     return(
         <div>
-            <div>Chose task type</div>
-            <Select
+            <h1 className={"textClass"}>Chose task type</h1>
+            <Select className={"Select"}
                 options={tasks}
                 placeholder={'Choose task'}
                 onChange={onChange}

@@ -7,7 +7,7 @@ export default function ListOfStrings({label, setData}){
     useEffect(() => setData(array), [array])
     return(
         <div>
-            <div>{label}</div>
+            <h3>{label}</h3>
             <LOSList setData={setArray}/>
         </div>
     )

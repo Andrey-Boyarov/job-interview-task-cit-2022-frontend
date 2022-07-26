@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import {BACKSPACE_KEY} from "../../tools/Tools";
+import "../../styles/TaskInput.css"
 
 /**
  * One cell of matrix
@@ -25,8 +26,8 @@ export default function Cell({columnIndex, array, setArray, size}){
     useEffect(() => setIncome('0'), [size])
 
     return(
-        <div>
-            <input type={"number"}
+        <div className={"Cell"}>
+            <input className={"CellInput"} type={"number"}
                    value={income}
                    onChange={(e) => {
                        if (['01', '02', '03', '04', '05', '06', '07', '08', '09'].includes(e.target.value))

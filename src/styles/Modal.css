@@ -1,0 +1,8 @@
+.Output{
+    margin: 10px 0 10px 0;
+    color: darkgray;
+    white-space:pre-wrap;
+    border-left: solid 2px white;
+    padding-left: 5px;
+    font-size: large;
+}
